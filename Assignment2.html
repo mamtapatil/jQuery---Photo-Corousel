@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<>
+<head>
+    <title>Assignment 2</title>
+    <style>
+        body {
+            min-height: 460px; background-color: #1c1c1c;
+            font: 14px Arial, Helvetica;
+        }
+        #carousel {
+            margin: auto; margin-top: 40px; padding: 5px;
+            width: 600px; height: 450px;
+            border:  1px solid #5c5c5c; border-radius: 5px;
+            -moz-box-shadow: 0px 0px 25px rgba(255,255,255,.5);
+            position: relative;
+        }
+        #keyPad {
+            width: 598px; height: 50px;
+            position: absolute; bottom: 5px; left:5px;
+            border: 1px solid #3f3f3f;
+            border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background-color: #1f1f1f;
+        }
+        #navBar { text-align: center; margin-top: 15px; color: #5c5c5c; }
+        #navBar a { color: #5c5c5c; text-decoration: none; text-shadow: -1px -1px #000; margin: 0 15px; }
+        #viewPort { position: relative;}
+        .imgClass {display:none; position:absolute; top:0;}
+
+
+
+    </style>
+</head>
+<body>
+<div id="carousel" >
+    <div id="viewPort">
+        <img id="image1" src="image1.jpg" class="imgClass">
+        <img id="image2" src="image2.jpg" class="imgClass">
+        <img id="image3" src="image3.jpg" class="imgClass">
+        <img id="image4" src="image4.jpg" class="imgClass">
+    </div>
+    <div id="keyPad" >
+        <div id="navBar"><a href="prev">Prev</a>|<a href="next">Next</a></div>
+    </div>
+</div>
+
+</body>
+
+
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+    $("#image1").show();
+    var $current = $("#image1");
+    $("a[href='next']").click(function(event) {
+        event.preventDefault();
+        if($current.next().length > 0){
+            $current.fadeOut();
+            $current = $current.next();
+            $current.fadeIn();
+        }
+    });
+    $("a[href='prev']").click(function(event) {
+        event.preventDefault();
+        if($current.prev().length > 0){
+            $current.fadeOut();
+            $current = $current.prev();
+            $current.fadeIn();
+        }
+    });
+</script>
+
+</html>
+
